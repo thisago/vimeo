@@ -9,7 +9,7 @@ Not all data is extracted from page, but the most important is the download, lat
 ### CLI
 
 ```
-$ vimeo -u "VIMEO URL" -r "REFERER (if video is restricted to a page)"
+$ vimeo -u "VIMEO URL" -r "Site that embed Vimeo video was (if video is restricted to a page)"
 ```
 
 ### Lib
@@ -20,7 +20,7 @@ import pkg/vimeo
 
 let
   client = newHttpClient(headers = newHttpHeaders({
-    "referer": "REFERER (if video is restricted to a page)"
+    "referer": "Site that embed Vimeo video was (if video is restricted to a page)"
   }))
   html = client.getContent "VIMEO URL"
   

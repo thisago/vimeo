@@ -240,7 +240,7 @@ var NNI620757015 = {kind: 2, len: 25, offset: 0, typ: null, name: null, sons: [{
 {kind: 1, offset: "hidden", len: 0, typ: NTI33554466, name: "hidden", sons: null}, 
 {kind: 1, offset: "lastModified", len: 0, typ: NTI33554440, name: "lastModified", sons: null}, 
 {kind: 1, offset: "linkColor", len: 0, typ: NTI33554440, name: "linkColor", sons: null}, 
-{kind: 1, offset: "referrer", len: 0, typ: NTI33554440, name: "referrer", sons: null}, 
+{kind: 1, offset: "referer", len: 0, typ: NTI33554440, name: "referer", sons: null}, 
 {kind: 1, offset: "title", len: 0, typ: NTI33554440, name: "title", sons: null}, 
 {kind: 1, offset: "URL", len: 0, typ: NTI33554440, name: "URL", sons: null}, 
 {kind: 1, offset: "visibilityState", len: 0, typ: NTI33554440, name: "visibilityState", sons: null}, 
