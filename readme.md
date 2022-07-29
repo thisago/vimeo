@@ -25,7 +25,8 @@ let
   html = client.getContent "VIMEO URL"
   
 let vimeoData = parseVimeo html 
-# Now you can use the data
+
+echo vimeoData.url # shows the raw media url
 ```
 
 ## License
