@@ -7,6 +7,7 @@ license       = "MIT"
 srcDir        = "src"
 bin           = @["vimeo"]
 binDir = "build"
+installExt = @["nim"]
 
 
 # Dependencies
