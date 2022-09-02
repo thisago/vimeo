@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.3.0 (Sep 2, 2022)
+
+- Added a function to get custom video resolution
+
+---
+
 ## Version 0.2.0 (Sep 2, 2022)
 
 - Added a function to get video with max quality

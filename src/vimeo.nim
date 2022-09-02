@@ -37,12 +37,26 @@ proc parseVimeo*(html: string): VimeoData =
   parseVimeo html.getVimeoJson
 
 proc maxQuality*(data: VimeoData): VimeoVideo =
+  ## Gets the max quality stream
   var max: tuple[quality, index: int]
   for i, vid in data.videos:
     let quality = vid.quality.strip(chars = AllChars - Digits).parseInt
     if quality > max.quality:
       max = (quality, i)
   result = data.videos[max.index]
+
+proc get*(data: VimeoData; maxQualityFallback = true; qualities: varargs[string]): VimeoVideo =
+  ## Gets the custom quality stream
+  new result
+  for quality in qualities:
+    for vid in data.videos:
+      if vid.quality == quality:
+        return vid
+  result = data.maxQuality
+
+proc get*(data: VimeoData; qualities: varargs[string]): VimeoVideo =
+  ## Gets the custom quality stream
+  data.get(true, qualities)
 
 when isMainModule:
   from std/httpclient import newHttpClient, close, getContent, newHttpHeaders
@@ -53,9 +67,12 @@ when isMainModule:
     let client = newHttpClient(headers = newHttpHeaders({
       "referer": referer
     }))
-    let html = client.getContent url
+    let data = parseVimeo client.getContent url
 
-    echo html.parseVimeo.maxQuality.url
-    
+    echo $(%*{
+      "json": %*data,
+      "maxQuality": data.maxQuality
+    })
+
   import pkg/cligen
   dispatch vimeo
