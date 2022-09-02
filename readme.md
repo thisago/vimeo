@@ -26,7 +26,7 @@ let
   
 let vimeoData = parseVimeo html 
 
-echo vimeoData.url # shows the raw media url
+echo vimeoData.maxQuality.url # shows the max quality video raw url
 ```
 
 ## License

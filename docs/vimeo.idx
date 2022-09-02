@@ -3,3 +3,4 @@ VimeoVideo	vimeo.html#VimeoVideo	vimeo: VimeoVideo
 getVimeoJson	vimeo.html#getVimeoJson,string	vimeo: getVimeoJson(html: string): JsonNode	
 parseVimeo	vimeo.html#parseVimeo,JsonNode	vimeo: parseVimeo(node: JsonNode): VimeoData	
 parseVimeo	vimeo.html#parseVimeo,string	vimeo: parseVimeo(html: string): VimeoData	
+maxQuality	vimeo.html#maxQuality,VimeoData	vimeo: maxQuality(data: VimeoData): VimeoVideo	

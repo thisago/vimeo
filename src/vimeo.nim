@@ -1,4 +1,5 @@
 from std/json import parseJson, JsonNode, `{}`, getStr, getInt, items
+from std/strutils import parseInt, strip, AllChars, Digits
 
 from pkg/util/forStr import between
 
@@ -35,6 +36,14 @@ proc parseVimeo*(html: string): VimeoData =
   ## Parses the Vimeo page from HTML
   parseVimeo html.getVimeoJson
 
+proc maxQuality*(data: VimeoData): VimeoVideo =
+  var max: tuple[quality, index: int]
+  for i, vid in data.videos:
+    let quality = vid.quality.strip(chars = AllChars - Digits).parseInt
+    if quality > max.quality:
+      max = (quality, i)
+  result = data.videos[max.index]
+
 when isMainModule:
   from std/httpclient import newHttpClient, close, getContent, newHttpHeaders
   from std/json import `%*`, `%`, `$`
@@ -46,8 +55,7 @@ when isMainModule:
     }))
     let html = client.getContent url
 
-    echo %*parseVimeo html
+    echo html.parseVimeo.maxQuality.url
     
   import pkg/cligen
   dispatch vimeo
-  # dispatch(between, echoResult = true)
